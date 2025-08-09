@@ -17,7 +17,22 @@ test_data = torchvision.datasets.CIFAR10(
     transform=torchvision.transforms.ToTensor(),
     download=True
 )
-
+"""
+DataLoader核心功能解析
+1. 自动批处理（Batching）
+   • 功能：将多个数据样本组合成一个批次（Batch），减少内存开销并利用硬件并行计算。
+   • 参数：batch_size=N（例如 batch_size=32 表示每个批次含 32 个样本）
+2. 数据打乱（Shuffling）
+   • 功能：每个训练周期（Epoch）开始时随机重排数据顺序，避免模型学习到样本顺序特征。
+   • 参数：shuffle=True（训练集通常启用，测试集禁用）。
+3. 并行数据加载（Multiprocessing）
+   • 功能：利用多进程预加载数据，避免 GPU/CPU 等待 I/O 阻塞。
+   • 参数：num_workers=K（K 为子进程数，一般设为 CPU 核数）。
+4. 内存管理优化
+   • 功能：
+     ◦ pin_memory=True：将数据直接加载到 GPU 的锁页内存（Pinned Memory），加速 CPU→GPU 传输。
+     ◦ drop_last=  True：丢弃最后一个不完整的批次（当样本数无法被 batch_size 整除时）。
+"""
 # 创建测试数据加载器（第一次定义，但会被下面的第二次定义覆盖）
 test_loader = DataLoader(test_data, batch_size=64, shuffle=True)
 
