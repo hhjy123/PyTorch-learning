@@ -76,6 +76,7 @@ for i in range(epoch):
 
     # 测试步骤（在整个测试集上评估）
     net.eval()
+    total_accuracy = 0
     total_test_loss = 0  # 累计测试损失
     with torch.no_grad():  # 禁用梯度计算（节省内存）
         for data in test_DataLoader:
@@ -83,9 +84,13 @@ for i in range(epoch):
             output = net(img)
             loss = loss_fn(output, targets)
             total_test_loss += loss.item()  # 累加批次损失
+            accuracy = (output.argmax(1) == targets).sum()
+            total_accuracy = total_accuracy + accuracy
 
     print(f"整体测试集上的Loss：{total_test_loss}")
+    print(f"整体测试集上的正确率：{total_accuracy/test_data_size}")
     writer.add_scalar('Test_Loss', total_test_loss, total_test_step)  # 记录测试损失
+    writer.add_scalar('test_accuracy', total_accuracy/test_data_size, total_test_step)
     total_test_step += 1  # 更新测试计数
 
     # 保存当前轮次的模型
