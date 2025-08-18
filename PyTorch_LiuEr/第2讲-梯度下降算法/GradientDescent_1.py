@@ -91,7 +91,7 @@ for epoch in range(100):
     w -= 0.01 * grad_val
 
     # 打印训练进度
-    print(f'Epoch: {epoch}, w = {w:.6f}, loss = {cost_val:.6f}')
+    print(f'Epoch: {epoch}, w = {w:.6f}, loss = {cost_val:.6f}, grad = {grad_val:.6f}')
 
     # 记录当前轮次和损失值
     epoch_list.append(epoch)
