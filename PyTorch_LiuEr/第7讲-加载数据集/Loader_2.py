@@ -2,12 +2,12 @@ from torch.utils.data import DataLoader
 from torchvision import transforms
 from torchvision import datasets
 
-train_dataset = datasets.MNIST(root='../dataset/mnist',
+train_dataset = datasets.MNIST(root='../数据/MNIST',
                                train=True,
                                transform=transforms.ToTensor(),
                                download=True)
 
-test_dataset = datasets.MNIST(root='../dataset/mnist',
+test_dataset = datasets.MNIST(root='../数据/MNIST',
                               train=False,
                               transform=transforms.ToTensor(),
                               download=True)
