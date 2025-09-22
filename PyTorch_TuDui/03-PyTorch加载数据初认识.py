@@ -16,6 +16,7 @@ from PIL import Image
 import os
 
 # help(Dataset)
+# Dataset？？能输出更加清晰的信息
 
 # 自定义数据集类，继承自PyTorch的Dataset基类
 class MyData(Dataset):
@@ -31,7 +32,7 @@ class MyData(Dataset):
         self.img_path = os.listdir(self.path)  # 获取该类别下的所有文件名列表
 
     def __getitem__(self, idx):
-        """获取单个样本（实现Dataset的核心接口）"""
+        """获取单个样本（返回数据和标签）（实现Dataset的核心接口）"""
         img_name = self.img_path[idx]  # 根据索引获取文件名
         # 拼接图像的完整路径：根目录/标签目录/文件名
         img_item_path = os.path.join(self.root_dir, self.label_dir, img_name)
