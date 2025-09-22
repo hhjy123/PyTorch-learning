@@ -7,6 +7,11 @@ from PIL import Image  # 图像处理库
 # 所有记录的数据将保存在该目录中，可通过TensorBoard可视化
 writer = SummaryWriter("TensorBoard")
 
+```
+之后查看的话可以终端输入tensorboard --logdir=TensorBoard
+默认是6006端口，可以通过--port=6007来指定，从而保证同时跑很多结果时不会出现在同一界面，导致混乱
+```
+
 # 定义图像文件路径
 img_path = "D:\\Resources\\PyTorch_Learn\\hymenoptera_data\\hymenoptera_data\\train\\ants_image\\0013035.jpg"
 
@@ -17,7 +22,7 @@ img_PIL = Image.open(img_path)
 # 转换后的数组维度为[高度, 宽度, 通道] (HWC)
 img_array = np.array(img_PIL)
 
-# 将图像添加到TensorBoard
+# 将图像添加到TensorBoar
 # 参数说明：
 # 'test' - 图像在TensorBoard中的标签名
 # img_array - 图像数据（NumPy数组）
@@ -29,7 +34,7 @@ writer.add_image('test', img_array, 1, dataformats='HWC')
 for i in range(100):
     # 添加标量数据到TensorBoard
     # 参数说明：
-    # 'y=2x' - 标量在TensorBoard中的标签名
+    # 'y=2x' - 标量在 tensorboardTensorBoard中的标签名
     # 2*i - 标量值（此处模拟y=2x函数）
     # i - X轴值（训练步数）
     writer.add_scalar('y=2x', 2*i, i)
