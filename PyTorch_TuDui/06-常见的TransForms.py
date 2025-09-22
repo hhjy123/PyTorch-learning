@@ -1,4 +1,5 @@
 # 文档说明：介绍常见的transforms操作
+# pytorch中内置函数_ _call()_ _的作用：类里面定义了内置call后，可以直接创建实例对象后不用点.()传入参数了
 """
 常见的transforms
 输入：PIL Image.open()   # 输入是PIL库打开的图像
