@@ -22,7 +22,7 @@ test_data = torchvision.datasets.CIFAR10(
 # dataset：使用的数据集
 # batch_size=64：每批加载64张图像
 # shuffle=True：打乱数据顺序
-# num_workers=0：使用主进程加载数据（无子进程）
+# num_workers=0：使用主进程加载数据（无子进程）：该参数可以选择多进程
 # drop_last=False：保留最后不足批量的样本
 test_loader = DataLoader(
     dataset=test_data,
