@@ -37,7 +37,7 @@ class Net(nn.Module):
         # 创建最大池化层
         self.maxpool1 = MaxPool2d(
             kernel_size=3,  # 池化窗口大小3x3
-            ceil_mode=False  # 当剩余部分不足池化窗口大小时，是否保留边缘
+            ceil_mode=False  # 当剩余部分不足池化窗口大小时，是否保留边缘，默认值是false
             # ceil_mode=False 表示忽略不足窗口大小的部分
             # ceil_mode=True 表示保留并池化剩余部分
         )
