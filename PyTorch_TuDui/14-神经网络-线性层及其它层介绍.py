@@ -1,3 +1,4 @@
+做nlp的重点关注torch.nn中Sparse Layers的nn.Embedding
 # 导入必要的PyTorch库
 import torch
 import torchvision.datasets  # 提供常用数据集
