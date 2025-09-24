@@ -85,6 +85,7 @@ for i in range(epoch):
             loss = loss_fn(output, targets)
             total_test_loss += loss.item()  # 累加批次损失
             #argmax为0，指的是行指标（列固定，行操作）；1指的是列指标（行不变，每列进行操作）
+            #dim为0，按列最大索引；dim为1，按行最大索引
             accuracy = (output.argmax(1) == targets).sum()
             total_accuracy = total_accuracy + accuracy
 
